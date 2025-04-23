@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <meta property="og:description" content="Streamline your business operations with our specialized AI agents.">
     <meta property="og:image" content="your-image-url.jpg">
     <meta property="og:url" content="https://yourwebsite.com">
+    <meta name="theme-color" content="#6366f1">
     <title>AI Agents Platform | 100+ AI Agents for Business</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
@@ -74,6 +76,23 @@
             cursor: pointer;
             z-index: 999;
         }
+
+        .social-icons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: var(--primary);
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
     </style>
     <script>
         // Dark Mode Toggle
@@ -99,6 +118,16 @@
             }
         });
 
+        // Validate Newsletter Form
+        function validateNewsletter(event) {
+            const emailInput = document.getElementById('newsletterEmail');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                alert("Please enter a valid email address.");
+                event.preventDefault();
+            }
+        }
+
         // Lazy Load Images
         document.addEventListener('DOMContentLoaded', () => {
             const images = document.querySelectorAll('img[loading="lazy"]');
@@ -108,8 +137,16 @@
                 });
             });
         });
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch(error => console.error('Service Worker Registration Failed:', error));
+        }
     </script>
 </head>
+
 <body class="light-mode">
     <!-- Navigation -->
     <header>
@@ -126,18 +163,25 @@
 
     <!-- Hero Section -->
     <section class="pt-20">
-        <h1 class="text-4xl">Welcome to AI Agents Platform</h1>
-        <!-- Lazy Loading Example -->
-        <img src="your-image-url.jpg" alt="Example Image" loading="lazy">
+        <h1 class="text-4xl text-center">Welcome to AI Agents Platform</h1>
+        <p class="text-center mt-4">Automate your workflows with 100+ AI agents designed for your business needs.</p>
+        <img src="your-image-url.jpg" alt="Example Image" loading="lazy" class="mx-auto mt-6">
     </section>
 
     <!-- Newsletter Signup -->
     <section>
-        <form class="container mx-auto max-w-md">
+        <form class="container mx-auto max-w-md" onsubmit="validateNewsletter(event)">
             <h2 class="text-2xl">Subscribe to our Newsletter</h2>
-            <input type="email" placeholder="Your Email" class="border rounded-lg w-full px-3 py-2 mt-4">
+            <input type="email" id="newsletterEmail" placeholder="Your Email" class="border rounded-lg w-full px-3 py-2 mt-4" required>
             <button type="submit" class="btn-primary mt-4 px-6 py-2 rounded-lg text-white">Subscribe</button>
         </form>
+    </section>
+
+    <!-- Social Media Links -->
+    <section class="social-icons">
+        <a href="https://facebook.com" aria-label="Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
     </section>
 
     <!-- Static Chatbot Placeholder -->
@@ -156,4 +200,5 @@
         console.log("Google Analytics placeholder. Replace with actual integration.");
     </script>
 </body>
+
 </html>
