@@ -1,0 +1,1201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Platform | 100+ AI Agents for Business</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #a855f7;
+            --accent: #ec4899;
+            --bg-dark: #111827;
+            --bg-light: #f9fafb;
+            --text-light: #f3f4f6;
+            --text-dark: #1f2937;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.9), rgba(236, 72, 153, 0.7));
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glassmorphism-dark {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .float-delay-1 {
+            animation-delay: 1s;
+        }
+        
+        .float-delay-2 {
+            animation-delay: 2s;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        .pulse-animation {
+            animation: pulse 3s infinite;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .agent-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .agent-card:hover .agent-overlay {
+            opacity: 1;
+        }
+        
+        .agent-overlay {
+            background: linear-gradient(0deg, rgba(79, 70, 229, 0.9) 0%, rgba(168, 85, 247, 0.7) 100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            transform: translateY(50px);
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        /* Custom checkbox */
+        .custom-checkbox {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 22px;
+            width: 22px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+        
+        .custom-checkbox:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .custom-checkbox .checkmark:after {
+            left: 8px;
+            top: 4px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <span class="text-2xl font-bold gradient-text">AI Agents</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#features" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Features</a>
+                    <a href="#pricing" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Pricing</a>
+                    <a href="#courses" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Courses</a>
+                    <a href="#agents" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Agents</a>
+                    <button onclick="openModal('loginModal')" class="px-4 py-2 rounded-lg text-indigo-600 font-medium hover:bg-indigo-50 transition">Log In</button>
+                    <button onclick="openModal('signupModal')" class="btn-primary px-4 py-2 rounded-lg text-white font-medium">Sign Up</button>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <div class="flex flex-col space-y-3 px-2 pt-2">
+                    <a href="#features" class="px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-100">Features</a>
+                    <a href="#pricing" class="px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-100">Pricing</a>
+                    <a href="#courses" class="px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-100">Courses</a>
+                    <a href="#agents" class="px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-100">Agents</a>
+                    <div class="pt-2 flex flex-col space-y-3">
+                        <button onclick="openModal('loginModal')" class="px-3 py-2 rounded-md text-base font-medium text-indigo-600 hover:bg-indigo-50">Log In</button>
+                        <button onclick="openModal('signupModal')" class="btn-primary px-3 py-2 rounded-md text-base font-medium text-white">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-20 overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://cdn1.genspark.ai/user-upload-image/imagen_generated/f37ee303-25c8-4868-9876-55a9b0287a89'); z-index: -2;"></div>
+        <div class="absolute inset-0 hero-gradient" style="z-index: -1;"></div>
+        
+        <div class="container mx-auto px-4 py-20 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+                        Automate Your Business with <span class="gradient-text">100+ AI Agents</span>
+                    </h1>
+                    <p class="mt-6 text-xl text-gray-100 max-w-2xl mx-auto lg:mx-0">
+                        Leverage the power of AI to streamline your workflow, boost productivity, and transform your business with our platform of specialized AI agents.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button onclick="openModal('subscribeModal')" class="btn-primary px-8 py-4 rounded-lg text-white font-bold text-lg shadow-lg">
+                            Join Now
+                        </button>
+                        <button onclick="openModal('premiumModal')" class="btn-secondary px-8 py-4 rounded-lg font-bold text-lg">
+                            Request Invite
+                        </button>
+                    </div>
+                    <div class="mt-6 text-sm text-gray-300">
+                        Join 50,000+ businesses already using our AI agents
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-lg">
+                        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                        <div class="absolute top-0 -right-4 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+                        <div class="relative">
+                            <img src="https://cdn1.genspark.ai/user-upload-image/imagen_generated/911f87ac-4f1e-4162-bcc2-0164faf73a1a" class="rounded-lg shadow-2xl float-animation" alt="AI Dashboard Interface">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 flex justify-center space-x-8 sm:space-x-16 opacity-80">
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.95 17.5h-3.3v-5.2H12v-2.5h1.65V8.25c0-1.65 1-2.6 2.5-2.6.7 0 1.4.1 1.4.1v2.3h-.9c-.75 0-1 .45-1 1v1.75h1.85l-.3 2.5h-1.55v5.2z"/>
+                    </svg>
+                </div>
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.047 10.047 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"/>
+                    </svg>
+                </div>
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-2.197 16.963h-2.476V9.084h2.476v7.879zM8.627 8.034c-.794 0-1.438-.642-1.438-1.435 0-.794.644-1.436 1.438-1.436.793 0 1.437.642 1.437 1.436 0 .793-.644 1.435-1.437 1.435zm10.338 8.929h-2.474v-3.979c0-.946-.018-2.165-1.321-2.165-1.3 0-1.525 1.034-1.525 2.101v4.043h-2.476V9.084h2.358v1.097c.339-.54 1.198-1.099 2.358-1.099 2.476 0 2.951 1.633 2.951 3.764v4.117z"/>
+                    </svg>
+                </div>
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.873 16.824c-.241.539-.994.804-1.633.566-4.272-2.54-5.975-3.153-9.07-5.282-.527-.343-.566-1.116-.221-1.644.344-.527 1.116-.566 1.644-.221l.015.008c2.622 1.8 4.149 2.323 8.114 4.678.537.241.802.993.564 1.632-.006.017-.014.031-.021.046-.191.39-.576.89-.576.89l1.184-.673z"/>
+                    </svg>
+                </div>
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186c-.276-1.039-1.089-1.858-2.12-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504c-1.032.278-1.845 1.097-2.12 2.136-.51 1.901-.51 5.867-.51 5.867s0 3.965.51 5.867c.276 1.039 1.089 1.858 2.12 2.136C4.495 20.454 12 20.454 12 20.454s7.505 0 9.377-.504c1.032-.278 1.845-1.097 2.12-2.136.51-1.901.51-5.867.51-5.867s0-3.965-.51-5.867zM9.546 14.546v-5.092l6.272 2.546-6.272 2.546z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Powerful AI Agents For Every Need</h2>
+                <p class="text-xl text-gray-600">Our AI agents are designed to handle diverse tasks across your business operations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-14 h-14 rounded-lg feature-icon flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Content Creation</h3>
+                    <p class="text-gray-600 mb-4">Generate blogs, social media posts, emails, and marketing copy with AI that understands your brand voice.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            SEO-optimized articles
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Engaging social media posts
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            High-converting emails
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-14 h-14 rounded-lg feature-icon flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Data Analysis</h3>
+                    <p class="text-gray-600 mb-4">Turn complex data into actionable insights with AI agents that perform deep analysis and provide recommendations.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Market trend analysis
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Customer behavior insights
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Predictive analytics
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-14 h-14 rounded-lg feature-icon flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Customer Support</h3>
+                    <p class="text-gray-600 mb-4">Deliver exceptional service with AI agents that handle inquiries, resolve issues, and engage customers 24/7.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Multilingual chat support
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Smart ticket routing
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Automated follow-ups
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-14 h-14 rounded-lg feature-icon flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Financial Management</h3>
+                    <p class="text-gray-600 mb-4">Optimize your finances with AI agents that forecast revenue, manage budgets, and identify cost-saving opportunities.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Cash flow forecasting
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Expense categorization
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Budget optimization
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-14 h-14 rounded-lg feature-icon flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Marketing Automation</h3>
+                    <p class="text-gray-600 mb-4">Scale your marketing efforts with AI agents that create campaigns, analyze performance, and target the right audience.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Campaign optimization
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Audience segmentation
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            A/B testing management
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                    <div class="w-14 h-14 rounded-lg feature-icon flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Product Development</h3>
+                    <p class="text-gray-600 mb-4">Innovate faster with AI agents that assist in ideation, market research, product design, and user testing.</p>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Competitor analysis
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Feature prioritization
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            User feedback analysis
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Choose Your Perfect Plan</h2>
+                <p class="text-xl text-gray-600">Access powerful AI agents with flexible pricing that scales with your business.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
+                <!-- Standard Plan -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex-1 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2">
+                    <div class="p-8 sm:p-10">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Standard Plan</h3>
+                        <div class="flex items-baseline text-gray-900">
+                            <span class="text-5xl font-extrabold tracking-tight">$9.99</span>
+                            <span class="ml-1 text-xl font-semibold">/month</span>
+                        </div>
+                        <p class="mt-4 text-lg text-gray-500">Access to 100+ core AI agents for everyday business tasks.</p>
+                        
+                        <div class="mt-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Social media management</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Content automation</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Email writing</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Basic SEO optimization</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-700">Standard support</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6 pb-8 px-8 sm:px-10 bg-gray-50">
+                        <h4 class="text-lg font-semibold mb-4">Courses Included:</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-indigo-600 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-blue-600 hover:text-blue-800">
+                                    Getting Started with AI Agents
+                                </a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-indigo-600 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-blue-600 hover:text-blue-800">
+                                    Automating Your Social Media
+                                </a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-indigo-600 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-blue-600 hover:text-blue-800">
+                                    Boosting Productivity with AI
+                                </a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-indigo-600 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-blue-600 hover:text-blue-800">
+                                    AI Content Bootcamp
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <button onclick="openModal('subscribeModal')" class="btn-primary w-full py-3 px-6 rounded-lg text-white font-semibold text-lg">
+                                Join Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="bg-gray-900 rounded-2xl shadow-xl overflow-hidden flex-1 transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 relative">
+                    <div class="absolute top-0 right-0 -mt-2 -mr-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-1 px-4 rounded-full text-sm shadow-lg">
+                        EXCLUSIVE
+                    </div>
+                    
+                    <div class="p-8 sm:p-10">
+                        <h3 class="text-2xl font-bold text-white mb-3">Premium 'Super AI Agents'</h3>
+                        <div class="flex items-baseline text-white">
+                            <span class="text-5xl font-extrabold tracking-tight">$1,000</span>
+                            <span class="ml-1 text-xl font-semibold">one-time</span>
+                        </div>
+                        <p class="mt-4 text-lg text-gray-300">Advanced real-time AI agents for full business automation.</p>
+                        
+                        <div class="mt-8">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-300">Real-time AI assistance</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-300">Fully automated business-building</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-300">Advanced branding & funnel creation</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-300">Priority support & exclusive updates</p>
+                            </div>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-6 w-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-base text-gray-300">Private community access</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6 pb-8 px-8 sm:px-10 bg-gray-800">
+                        <h4 class="text-lg font-semibold mb-4 text-white">Courses Included:</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-purple-400 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-purple-300 hover:text-purple-200">
+                                    Build a Business in 24 Hours
+                                </a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-purple-400 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-purple-300 hover:text-purple-200">
+                                    Real-Time Automation Masterclass
+                                </a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-purple-400 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-purple-300 hover:text-purple-200">
+                                    AI Branding & Funnel Building
+                                </a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-purple-400 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                                </svg>
+                                <a href="#" onclick="openModal('coursePreviewModal')" class="ml-2 text-purple-300 hover:text-purple-200">
+                                    Scaling with Super Agents
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <button onclick="openModal('premiumModal')" class="w-full py-3 px-6 border-2 border-purple-400 text-purple-300 hover:bg-purple-900 hover:text-white transition-colors duration-300 rounded-lg font-semibold text-lg">
+                                Request Invite
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI Agent Categories -->
+    <section id="agents" class="py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">AI Agent Categories</h2>
+                <p class="text-xl text-gray-600">Explore our diverse collection of specialized AI agents designed for various business needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Category 1 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Communication</h3>
+                    <p class="text-gray-600 mb-3">Chat, email, and messaging AI agents that enhance communication.</p>
+                    <div class="text-indigo-600 font-medium">28 Agents</div>
+                </div>
+                
+                <!-- Category 2 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Analytics</h3>
+                    <p class="text-gray-600 mb-3">Data analysis and visualization AI agents for better insights.</p>
+                    <div class="text-purple-600 font-medium">35 Agents</div>
+                </div>
+                
+                <!-- Category 3 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Content Creation</h3>
+                    <p class="text-gray-600 mb-3">Writing, editing, and content optimization AI agents.</p>
+                    <div class="text-pink-600 font-medium">42 Agents</div>
+                </div>
+                
+                <!-- Category 4 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Finance</h3>
+                    <p class="text-gray-600 mb-3">Budgeting, forecasting, and financial management AI agents.</p>
+                    <div class="text-blue-600 font-medium">19 Agents</div>
+                </div>
+                
+                <!-- Category 5 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Marketing</h3>
+                    <p class="text-gray-600 mb-3">Campaign management, SEO, and audience targeting AI agents.</p>
+                    <div class="text-green-600 font-medium">31 Agents</div>
+                </div>
+                
+                <!-- Category 6 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Productivity</h3>
+                    <p class="text-gray-600 mb-3">Task management, scheduling, and workflow optimization AI agents.</p>
+                    <div class="text-yellow-600 font-medium">27 Agents</div>
+                </div>
+                
+                <!-- Category 7 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Customer Service</h3>
+                    <p class="text-gray-600 mb-3">Support, ticket management, and customer interaction AI agents.</p>
+                    <div class="text-red-600 font-medium">23 Agents</div>
+                </div>
+                
+                <!-- Category 8 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Innovation</h3>
+                    <p class="text-gray-600 mb-3">Idea generation, research, and product development AI agents.</p>
+                    <div class="text-gray-600 font-medium">15 Agents</div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button onclick="openModal('agentCatalogModal')" class="btn-primary px-6 py-3 rounded-lg text-white font-semibold">
+                    View All AI Agents
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured AI Agents -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Featured AI Agents</h2>
+                <p class="text-xl text-gray-600">Discover our most popular and powerful AI agents that are transforming businesses.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Agent 1 -->
+                <div class="agent-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/imagen_generated/911f87ac-4f1e-4162-bcc2-0164faf73a1a" alt="Analytics Dashboard" class="w-full h-48 object-cover">
+                        <div class="agent-overlay absolute inset-0 flex items-center justify-center opacity-0">
+                            <button onclick="openModal('agentDetailModal')" class="px-4 py-2 bg-white rounded-lg text-indigo-600 font-medium hover:bg-gray-100 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold">Analytics Pro</h3>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Analytics</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Comprehensive data analysis and visualization for actionable business insights.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                4.9
+                            </span>
+                            <span class="mx-2">•</span>
+                            <span>5.2K uses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agent 2 -->
+                <div class="agent-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/imagen_generated/7244337b-6126-4638-8d25-9328a9b78428" alt="Customer Support Chatbot" class="w-full h-48 object-cover">
+                        <div class="agent-overlay absolute inset-0 flex items-center justify-center opacity-0">
+                            <button onclick="openModal('agentDetailModal')" class="px-4 py-2 bg-white rounded-lg text-indigo-600 font-medium hover:bg-gray-100 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold">Support Bot</h3>
+                            <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Customer Service</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Intelligent customer support automation with personalized responses and issue resolution.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                4.8
+                            </span>
+                            <span class="mx-2">•</span>
+                            <span>8.7K uses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agent 3 -->
+                <div class="agent-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/imagen_generated/5c467e09-9bc0-418d-8326-09e3d30ffb4d" alt="Content Generator" class="w-full h-48 object-cover">
+                        <div class="agent-overlay absolute inset-0 flex items-center justify-center opacity-0">
+                            <button onclick="openModal('agentDetailModal')" class="px-4 py-2 bg-white rounded-lg text-indigo-600 font-medium hover:bg-gray-100 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold">Content Genius</h3>
+                            <span class="bg-pink-100 text-pink-800 text-xs font-semibold px-2.5 py-0.5 rounded">Content Creation</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Advanced content generation for blogs, social media, and marketing materials.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                4.9
+                            </span>
+                            <span class="mx-2">•</span>
+                            <span>12.3K uses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agent 4 -->
+                <div class="agent-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/imagen_generated/f37ee303-25c8-4868-9876-55a9b0287a89" alt="Social Media Manager" class="w-full h-48 object-cover">
+                        <div class="agent-overlay absolute inset-0 flex items-center justify-center opacity-0">
+                            <button onclick="openModal('agentDetailModal')" class="px-4 py-2 bg-white rounded-lg text-indigo-600 font-medium hover:bg-gray-100 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-lg font-bold">Social Commander</h3>
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Marketing</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Complete social media management with content creation, scheduling, and analytics.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                4.7
+                            </span>
+                            <span class="mx-2">•</span>
+                            <span>9.5K uses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button onclick="openModal('agentCatalogModal')" class="bg-white border-2 border-indigo-600 hover:bg-indigo-50 text-indigo-600 font-semibold px-6 py-3 rounded-lg transition-colors">
+                    Explore All 100+ AI Agents
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section id="courses" class="py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Learn to Master AI Agents</h2>
+                <p class="text-xl text-gray-600">Comprehensive courses to help you get the most out of our powerful AI agents.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://source.unsplash.com/800x600/?artificial-intelligence" alt="Getting Started with AI Agents" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 m-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-1 rounded">Standard Plan</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Getting Started with AI Agents</h3>
+                        <p class="text-gray-600 mb-4">Learn the fundamentals of working with AI agents and how to integrate them into your workflow.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-600 ml-2">4.9 (1.2K reviews)</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>2 hours 30 minutes</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button onclick="openModal('coursePreviewModal')" class="btn-secondary py-2 px-4 rounded-lg font-medium">
+                                Preview
+                            </button>
+                            <button onclick="openModal('subscribeModal')" class="btn-primary py-2 px-4 rounded-lg text-white font-medium">
+                                Enroll
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://source.unsplash.com/800x600/?social-media" alt="Automating Your Social Media" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 m-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-1 rounded">Standard Plan</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Automating Your Social Media</h3>
+                        <p class="text-gray-600 mb-4">Create effective social media strategies with AI tools for content creation, scheduling, and analytics.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-600 ml-2">4.8 (970 reviews)</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>3 hours 15 minutes</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button onclick="openModal('coursePreviewModal')" class="btn-secondary py-2 px-4 rounded-lg font-medium">
+                                Preview
+                            </button>
+                            <button onclick="openModal('subscribeModal')" class="btn-primary py-2 px-4 rounded-lg text-white font-medium">
+                                Enroll
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://source.unsplash.com/800x600/?business" alt="Build a Business in 24 Hours" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 m-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-1 rounded">Premium Plan</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Build a Business in 24 Hours</h3>
+                        <p class="text-gray-600 mb-4">Leverage Super AI Agents to quickly set up a complete business foundation with minimal effort.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-gray-600 ml-2">5.0 (425 reviews)</span>
+                        </div>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>4 hours 45 minutes</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <button onclick="openModal('coursePreviewModal')" class="btn-secondary py-2 px-4 rounded-lg font-medium">
+                                Preview
+                            </button>
+                            <button onclick="openModal('premiumModal')" class="bg-purple-600 hover:bg-purple-700 py-2 px-4 rounded-lg text-white font-medium">
+                                Premium Access
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://source.unsplash.com/800x600/?automation" alt="AI Branding & Funnel Building" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 right-0 m-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-1 rounded">Premium Plan</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI Branding & Funnel Building</h3>
+                        <p class="text-gray-600 mb-4">Advanced techniques for creating personalized branding and high-converting marketing funnels with AI.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118
